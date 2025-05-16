@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "Multi-tenant organization application",
 };
 
+import Navbar from '@/components/Navbar';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          <main className="min-h-screen pt-16">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

@@ -18,16 +18,18 @@ export default async function OnboardingPage() {
   }
   
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl font-bold">Create your organization</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Create your organization</h1>
           <p className="mt-2 text-sm text-gray-600">
             Set up your first organization to get started
           </p>
         </div>
         
-        <OrganizationForm userId={user?.id || ""} />
+        <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+          <OrganizationForm userId={user?.id || ""} />
+        </div>
       </div>
     </div>
   );

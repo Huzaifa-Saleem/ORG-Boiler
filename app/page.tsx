@@ -18,10 +18,11 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Organize, Collaborate, Succeed
+            ORG Boiler
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            The modern platform for team collaboration and knowledge sharing.
+            A modern, open-source multi-tenant organization management platform
+            built with Next.js, Prisma, and PostgreSQL.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">

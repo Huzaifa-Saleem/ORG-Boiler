@@ -6,8 +6,11 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const host = request.headers.get("host") || "";
   
+  // Check if subdomain feature is enabled in environment
+  const isSubdomainEnabled = process.env.IS_SUBDOMAIN === "true";
+  
   // Check if using a subdomain
-  const subdomain = getSubdomain(host);
+  const subdomain = isSubdomainEnabled ? getSubdomain(host) : null;
   const isSubdomainRoute = !!subdomain;
   
   // Check if the path is for an organization route
@@ -44,8 +47,8 @@ export async function middleware(request: NextRequest) {
   // Check if the path is in the auth section
   const isAuthPath = pathname.startsWith("/auth/");
   
-  // Handle subdomain routing
-  if (isSubdomainRoute && !pathname.startsWith("/api/")) {
+  // Handle subdomain routing (only if enabled in environment)
+  if (isSubdomainEnabled && isSubdomainRoute && !pathname.startsWith("/api/")) {
     // If accessing via subdomain, rewrite to the organization route
     const url = request.nextUrl.clone();
     url.pathname = `/organizations/${subdomain}${pathname}`;
